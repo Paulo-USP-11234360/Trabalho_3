@@ -1,0 +1,38 @@
+name: Teste Automatizado
+
+on: [push, pull_request]
+
+jobs:
+  branch_1:
+    runs-on: ubuntu-latest
+
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v2
+
+    - name: Instalação das dependências
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Teste Branch 1
+      run: python scripts/senha.py
+
+  branch_2:
+    runs-on: ubuntu-latest
+
+    if: github.ref == 'refs/heads/validacao_interna'
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v2
+
+    - name: Instalação das dependências
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Teste Branch 2
+      run: pytest testes/test_senha.py
