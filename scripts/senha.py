@@ -14,8 +14,8 @@ def check_password(user_password, stored_hashed_password):
 
 if __name__ == "__main__":
     # Caminhos dos arquivos de senha
-    password_file = "../senha.txt"
-    hashed_password_file = "../senha_encriptada.txt"
+    password_file = "senha.txt"
+    hashed_password_file = "senha_encriptada.txt"
 
     # Leia a senha armazenada e a senha criptografada do arquivo
     stored_password = get_password_from_file(password_file)
