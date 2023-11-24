@@ -1,3 +1,4 @@
+import os
 import hashlib
 
 def get_password_from_file(file_path):
@@ -13,18 +14,20 @@ def check_password(user_password, stored_hashed_password):
     return hashed_user_password == stored_hashed_password
 
 if __name__ == "__main__":
+    # Obtém o diretório do script
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+
     # Caminhos dos arquivos de senha
-    password_file = "senha.txt"
-    hashed_password_file = "senha_encriptada.txt"
+    password_file = os.path.join(script_directory, "senha.txt")
+    hashed_password_file = os.path.join(script_directory, "senha_encriptada.txt")
 
     # Leia a senha armazenada e a senha criptografada do arquivo
     stored_password = get_password_from_file(password_file)
     stored_hashed_password = get_password_from_file(hashed_password_file)
 
-    # Opção 1: Exibir a senha ao usuário
+    # Exibe a senha ao usuário
     print(f"A senha armazenada é: {stored_password}")
     user_password = input("Digite a senha para verificar: ")
-
 
     if check_password(user_password, stored_hashed_password):
         print("Senha correta!")
