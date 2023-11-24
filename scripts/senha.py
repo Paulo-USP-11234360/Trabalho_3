@@ -1,5 +1,6 @@
 import os
 import hashlib
+import sys
 
 def get_password_from_file(file_path):
     with open(file_path, 'r') as file:
@@ -27,7 +28,13 @@ if __name__ == "__main__":
 
     # Exibe a senha ao usuário
     print(f"A senha armazenada é: {stored_password}")
-    user_password = input("Digite a senha para verificar: ")
+
+    # Obtém a senha do argumento de linha de comando
+    if len(sys.argv) != 2:
+        print("Uso: python senha.py <senha>")
+        sys.exit(1)
+
+    user_password = sys.argv[1]
 
     if check_password(user_password, stored_hashed_password):
         print("Senha correta!")
