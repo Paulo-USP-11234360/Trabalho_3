@@ -17,10 +17,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Criar arquivo de ambiente
+      run: echo "export PYTHONPATH=\${{ github.workspace }}/scripts:\$PYTHONPATH" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Definir variável de ambiente
+      run: echo "export STORED_HASHED_PASSWORD=hashed_password_here" >> $GITHUB_ENV
+      env:
+        STORED_HASHED_PASSWORD: senha123
+
     - name: Teste Branch 1
-      run: |
-        export PYTHONPATH="${{ github.workspace }}/scripts:$PYTHONPATH"
-        python scripts/senha.py
+      run: python scripts/senha.py
       env:
         USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
 
@@ -38,9 +45,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Criar arquivo de ambiente
+      run: echo "export PYTHONPATH=\${{ github.workspace }}/scripts:\$PYTHONPATH" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Definir variável de ambiente
+      run: echo "export STORED_HASHED_PASSWORD=hashed_password_here" >> $GITHUB_ENV
+      env:
+        STORED_HASHED_PASSWORD: senha123
+
     - name: Teste Branch 2
-      run: |
-        export PYTHONPATH="${{ github.workspace }}/scripts:$PYTHONPATH"
-        pytest testes/
+      run: pytest testes/
       env:
         USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
