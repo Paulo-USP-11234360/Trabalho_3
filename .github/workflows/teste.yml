@@ -22,7 +22,7 @@ jobs:
       shell: bash
 
     - name: Definir variável de ambiente
-      run: echo "export STORED_HASHED_PASSWORD=hashed_password_here" >> $GITHUB_ENV
+      run: echo "export STORED_HASHED_PASSWORD=senha123" >> $GITHUB_ENV
       env:
         STORED_HASHED_PASSWORD: senha123
 
@@ -50,7 +50,7 @@ jobs:
       shell: bash
 
     - name: Definir variável de ambiente
-      run: echo "export STORED_HASHED_PASSWORD=hashed_password_here" >> $GITHUB_ENV
+      run: echo "export STORED_HASHED_PASSWORD=senha123" >> $GITHUB_ENV
       env:
         STORED_HASHED_PASSWORD: senha123
 
