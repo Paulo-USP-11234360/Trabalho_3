@@ -10,7 +10,12 @@ def hash_password(password):
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
     return hashed_password
 
-def check_password(user_password, stored_hashed_password):
+def check_password(user_password, stored_hashed_password=None):
+    if stored_hashed_password is None:
+        stored_hashed_password = os.getenv("STORED_HASHED_PASSWORD")
+        if stored_hashed_password is None:
+            raise ValueError("A variável de ambiente STORED_HASHED_PASSWORD não foi fornecida.")
+    
     hashed_user_password = hash_password(user_password)
     return hashed_user_password == stored_hashed_password
 
