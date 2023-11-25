@@ -46,7 +46,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Criar arquivo de ambiente
-      run: echo "export PYTHONPATH=\${{ github.workspace }}/scripts:\$PYTHONPATH" >> $GITHUB_ENV
+      run: echo "export STORED_HASHED_PASSWORD=$(echo -n 'senha123' | sha256sum | awk '{print $1}')" >> $GITHUB_ENV
       shell: bash
 
     - name: Definir variável de ambiente
