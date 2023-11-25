@@ -30,13 +30,13 @@ if __name__ == "__main__":
     print(f"A senha armazenada é: {stored_password}")
 
     # Obtém a senha do argumento de linha de comando
-    if len(sys.argv) != 2:
-        print("Uso: python senha.py <senha>")
-        sys.exit(1)
+    # if len(sys.argv) != 2:
+    #     print("Uso: python senha.py <senha>")
+    #     sys.exit(1)
 
-    user_password = sys.argv[1]
+    # user_password = sys.argv[1]
 
-    if check_password(user_password, stored_hashed_password):
-        print("Senha correta!")
-    else:
-        print("Senha incorreta!")
+    # if check_password(user_password, stored_hashed_password):
+    #     print("Senha correta!")
+    # else:
+    #     print("Senha incorreta!")
