@@ -55,6 +55,8 @@ jobs:
         STORED_HASHED_PASSWORD: senha123
 
     - name: Teste Branch 2
-      run: pytest testes/
+      run: |
+        cd ${{ github.workspace }}
+        pytest testes/
       env:
         USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
