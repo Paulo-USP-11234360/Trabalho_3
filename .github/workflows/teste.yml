@@ -17,8 +17,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Adicionar scripts ao PYTHONPATH
-      run: echo "::add-path::${{ github.workspace }}/scripts"
+    - name: Criar arquivo de ambiente
+      run: echo "export PYTHONPATH=\${{ github.workspace }}/scripts:\$PYTHONPATH" >> $GITHUB_ENV
 
     - name: Teste Branch 1
       run: python scripts/senha.py
@@ -39,8 +39,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Adicionar scripts ao PYTHONPATH
-      run: echo "::add-path::${{ github.workspace }}/scripts"
+    - name: Criar arquivo de ambiente
+      run: echo "export PYTHONPATH=\${{ github.workspace }}/scripts:\$PYTHONPATH" >> $GITHUB_ENV
 
     - name: Teste Branch 2
       run: pytest testes/
